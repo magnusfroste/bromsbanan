@@ -58,17 +58,11 @@
     } catch (e) {}
   }
 
+  /* Alla meningar finns som inspelad röst (ljud/lines.js). Ingen talsyntes:
+     appen ska låta likadant på varje enhet och aldrig byta röst. */
   function tala(text) {
     if (!S.ljud || !text) return;
-    try { if (window.__rost && window.__rost(text)) return; } catch (e) {}
-    try {
-      if ('speechSynthesis' in window) {
-        var u = new SpeechSynthesisUtterance(text);
-        u.lang = 'sv-SE'; u.rate = 0.95; u.pitch = 1.02;
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(u);
-      }
-    } catch (e) {}
+    try { window.__rost && window.__rost(text); } catch (e) {}
   }
 
   /* ---------------- Kotten (SVG) ---------------- */
@@ -406,7 +400,6 @@
     ljudKnapp.setAttribute('aria-pressed', S.ljud ? 'true' : 'false');
     ljudKnapp.setAttribute('aria-label', S.ljud ? 'Stäng av ljudet' : 'Sätt på ljudet');
     if (!S.ljud) {
-      try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {}
       try { window.__rostStopp && window.__rostStopp(); } catch (e) {}
       spår('sound_off');
     }
