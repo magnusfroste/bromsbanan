@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Bromsbanan – hur långt innan bilen stannar? åk 7–9</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Krafter, rörelse och trafiksäkerhet för åk 7–9: räkna ut bromssträckan på torr och blöt asfalt och se hur reaktionstiden förlänger stoppsträckan.">
+<meta name="theme-color" content="#FBF7EF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="startskarm">
+  <div class="startinre">
+    <div id="startkotte" aria-hidden="true"></div>
+    <h1>Bromsbanan</h1>
+    <p class="starttext">En bil kör mot ett hinder. Välj hur långt den hinner innan den står stilla – på torr väg, på blöt väg och med en sekunds reaktionstid. Rätt svar ger en stjärna. Fel svar kostar inget: bilen bromsar ändå och du ser det rätta avståndet.</p>
+    <button id="spela" class="play" type="button">Spela</button>
+    <p class="starttext liten">Åk 7–9, fysik. En runda tar ungefär fem minuter.</p>
+    <div class="larare">
+      <h2>För dig som är vuxen</h2>
+      <p><strong>Lgr22, fysik åk 7–9:</strong> ”Krafter, rörelser och rörelseförändringar samt hur kunskaper om detta kan användas, till exempel i frågor om trafiksäkerhet.” (FY.7-9.1.9)</p>
+      <p>Appen tränar bromssträckans beroende av hastigheten och av friktionen: bromssträcka = v² / (2 · µ · g). Nivå 1 är torr asfalt (µ = 0,8), nivå 2 blöt asfalt (µ = 0,5) och nivå 3 lägger till en sekunds reaktionstid, så att eleven ser att stoppsträckan är reaktionssträcka plus bromssträcka. Skalan på vägen är alltid 0–100 meter, så avstånden går att jämföra mellan frågorna. Vid 50 km/h på torr väg blir det 14 + 12 = 26 meter, samma storleksordning som Trafikverkets tabell för stoppsträcka.</p>
+      <p>Fakta: Trafikverket och NTF om stoppsträcka och reaktionstid; µ-värden för personbilsdäck på torr och blöt asfalt är typvärden ur läroböcker i fysik. Alla meningar skrivs och läses upp, så appen fungerar med ljudet avstängt.</p>
+    </div>
+  </div>
+</div>
+
+<header id="hud" hidden>
+  <button id="nivaKnapp" type="button" aria-label="Byt nivå">Nivå 1</button>
+  <span class="stjarna" aria-hidden="true">★</span><span id="stjarnText" aria-label="stjärnor i denna nivå">0</span>
+  <span id="prickar" aria-hidden="true"></span>
+  <button id="ljud" type="button" aria-label="Stäng av ljudet" aria-pressed="true">🔊</button>
+</header>
+
+<main id="spel" hidden>
+  <p id="fragText" aria-live="polite"></p>
+  <div id="scen"><canvas id="duk" aria-label="En bil på en väg med meterstreck"></canvas></div>
+  <p id="svarText" aria-live="polite"></p>
+  <div id="val" role="group" aria-label="Välj avstånd"></div>
+  <button id="nasta" type="button" hidden>Nästa</button>
+</main>
+
+<div id="ruta" hidden>
+  <div class="ruteinre">
+    <div id="rutaKotte" aria-hidden="true"></div>
+    <p id="rutaText"></p>
+    <div id="rutaSiffra"></div>
+    <button id="rutaKnapp" type="button" aria-label="Spela igen">↻</button>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="ljud/lines.js"></script>
+<script src="ljud/rosten.js"></script>
+<script src="app.js"></script>
+<script src="https://www.skolappar.com/kotten.js" defer></script>
+</body>
+</html>
